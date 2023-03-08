@@ -7,7 +7,7 @@ const register = async (req, res) => {
   const token = user.CreateJwt();
   res.status(StatusCodes.CREATED).send({
     user: {
-      name: user.firstName + " " + user.lastName,
+      name:user.name
     },
     token,
   });
