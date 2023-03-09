@@ -61,7 +61,8 @@ const AppProvider = ({ children }) => {
           ...userInput,
         }
       );
-      console.log(data,status);
+      // console.log(data,status);
+      console.log(data.user.name);
       dispatch({ type: LOGIN_USER_SUCCESS, payload:{ name:data.user.name,status:status }});
       localStorage.setItem(
         "user",

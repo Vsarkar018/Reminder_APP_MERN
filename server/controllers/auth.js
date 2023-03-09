@@ -29,7 +29,7 @@ const login = async (req, res) => {
   const token = user.CreateJwt();
   res.status(StatusCodes.OK).json({
     user: {
-      name: user.firstName + " " + user.lastName,
+      name: user.name,
     },
     token,
   });

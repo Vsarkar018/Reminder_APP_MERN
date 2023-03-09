@@ -4,7 +4,7 @@ require("express-async-errors");
 const express = require("express");
 const app = express();
 const connectDB = require("./db/connect");
-
+const authenticateUser = require('./middleware/auth')
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/error-handler");
 const authRouter = require("./routes/auth");

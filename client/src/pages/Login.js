@@ -19,6 +19,7 @@ function Login() {
   };
   return (
     <>
+    {/* {console.log(user)} */}
       {user && navigate("/dashboard")}
       <Wrapper className="page full-page">
         <div className="container">
