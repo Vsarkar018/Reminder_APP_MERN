@@ -1,18 +1,11 @@
-import { Route } from "react-router-dom";
-import React, { Children } from "react";
 import { Navigate } from "react-router-dom";
 import { useGlobalContext } from "../context/appContext";
-
-const PrivateRoute = ({ children, ...rest }) => {
+const PrivateRoute = ({ children }) => {
   const { user } = useGlobalContext();
-  return (
-    <Route {...rest}
-    render={()=>{
-      return user?children:<Navigate to="/"></Navigate>
-    }}>
-
-    </Route>
-  )
+  if (!user) {
+    return <Navigate to="/"/>
+  }
+  return children;
 };
 
 export default PrivateRoute;

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useGlobalContext } from "../context/appContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormRow from "../components/FormRow";
 import styled from "styled-components";
 const Register = () => {
   const [values, setValues] = useState({
-    name:"",
+    name: "",
     email: "",
     password: "",
   });
@@ -18,13 +18,19 @@ const Register = () => {
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+  const navigate = useNavigate();
   return (
     <>
+      {user && navigate("/dashboard")}
       <Wrapper className="page full-page">
         <div className="container">
           {alert.showAlert && (
             <div className={`alert alert-${alert.type}`}>
-              {alert.type==="success"?"Registration Successful":alert.status===500?"Email Already Exist":"Please enter a Valid password"}
+              {alert.type === "success"
+                ? "Registration Successful"
+                : alert.status === 500
+                ? "Email Already Exist"
+                : "Please enter a Valid password"}
             </div>
           )}
           <form className="form" onSubmit={handleSubmit}>
@@ -53,7 +59,7 @@ const Register = () => {
               className="btn btn-block"
               disabled={isLoading}
             >
-              {isLoading?'Registering user...' : 'Register'}
+              {isLoading ? "Registering user..." : "Register"}
             </button>
             <p>
               Already an member ?<Link to="/login"> Login here</Link>
@@ -63,7 +69,7 @@ const Register = () => {
       </Wrapper>
     </>
   );
-}
+};
 
 const Wrapper = styled.section`
   display: grid;
